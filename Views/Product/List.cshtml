@@ -1,0 +1,37 @@
+﻿@model List<Product>
+@{
+    ViewBag.Title = "Product Page";
+}
+
+<h2>Product Manager</h2>
+
+<form method="post">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th> Code </th>
+                <th> Name </th>
+                <th> Price </th>
+                <th> Release Date </th>
+                <th> </th>
+                <th> </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var products in Model)
+            {
+                <tr class="table-active">
+                    <td> @products.code </td>
+                    <td> @products.name </td>
+                    <td> $@string.Format("{0:C}", products.yearlyPrice) </td>
+                    <td> @products.releaseDate </td>
+                    <td>
+                        <a class="btn btn-primary mx-2" asp-action="Edit" asp-route-id="@products.ProductID">Edit</a>
+                    </td>
+                    <td> <a class="btn btn-primary mx-2" asp-action="Delete" asp-route-id="@products.ProductID">Delete</a> </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a class="btn btn-secondary my-2 my-sm-0" asp-action="Add">Add Product</a>
+</form>

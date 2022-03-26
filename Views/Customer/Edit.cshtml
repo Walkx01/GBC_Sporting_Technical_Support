@@ -1,0 +1,75 @@
+﻿@model Customer
+@{
+    ViewBag.Title = ViewBag.Action + " Customer";
+}
+<h2>@ViewBag.Title</h2>
+<form asp-action="Edit" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="row mb-3">
+        <label asp-for="firstName" class="col-sm-2 col-form-label">First Name</label>
+        <div class="col-sm-10">
+            <input asp-for="firstName" class="form-control">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label asp-for="lastName" class="col-sm-2 col-form-label">Last Name</label>
+        <div class="col-sm-10">
+            <input asp-for="lastName" class="form-control">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label asp-for="address" class="col-sm-2 col-form-label">Address</label>
+        <div class="col-sm-10">
+            <input asp-for="address" class="form-control">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label asp-for="city" class="col-sm-2 col-form-label">City</label>
+        <div class="col-sm-10">
+            <input asp-for="city" class="form-control">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label asp-for="state" class="col-sm-2 col-form-label">State</label>
+        <div class="col-sm-10">
+            <input asp-for="state" class="form-control">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label asp-for="postCode" class="col-sm-2 col-form-label">Postal Code</label>
+        <div class="col-sm-10">
+            <input asp-for="postCode" class="form-control">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label asp-for="country" class="col-sm-2 col-form-label">Country</label>
+        <div class="col-sm-10">
+            <select class="form-select " asp-for="country">
+                <option selected>Select a country</option>
+                @*@foreach (Technician t in ViewBag.Technician)
+                {
+                    <option value="@t.TechnicianID">@t.name</option>
+                }*@
+            </select>
+        </div>
+    </div>
+        <div class="row mb-3">
+            <label asp-for="email" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+                <input asp-for="email" class="form-control">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label asp-for="phone" class="col-sm-2 col-form-label">Phone</label>
+            <div class="col-sm-10">
+                <input asp-for="phone" class="form-control">
+            </div>
+        </div>
+
+
+
+        <input type="hidden" asp-for="customerID" />
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a asp-action="List"
+           class="btn btn-primary">Cancel</a>
+</form>
