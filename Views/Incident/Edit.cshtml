@@ -3,7 +3,7 @@
     ViewBag.Title = ViewBag.Action + " Incident";
 }
 <h2>@ViewBag.Title</h2>
-<form asp-action="Edit" method="post">
+<form asp-action="@ViewBag.Action" method="post">
     <div asp-validation-summary="All" class="text-danger"></div>
     <div class="mb-3">
         <label asp-for="customerID" class="form-label">Customer</label>

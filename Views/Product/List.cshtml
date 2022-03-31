@@ -5,6 +5,11 @@
 
 <h2>Product Manager</h2>
 
+@if (TempData.Keys.Contains("message"))
+{
+    <h3>@TempData["message"]</h3>
+}
+
 <form method="post">
     <table class="table table-bordered table-striped">
         <thead>
@@ -21,10 +26,10 @@
             @foreach (var products in Model)
             {
                 <tr class="table-active">
-                    <td> @products.code </td>
+                    <td> @products.code.ToUpper() </td>
                     <td> @products.name </td>
-                    <td> $@string.Format("{0:C}", products.yearlyPrice) </td>
-                    <td> @products.releaseDate </td>
+                    <td> $@string.Format("{0:c}", products.yearlyPrice) </td>
+                    <td> @products.releaseDate.ToShortDateString() </td>
                     <td>
                         <a class="btn btn-primary mx-2" asp-action="Edit" asp-route-id="@products.ProductID">Edit</a>
                     </td>

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace A1.Migrations
 {
-    public partial class dbC : Migration
+    public partial class dataaaaa : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -111,9 +111,9 @@ namespace A1.Migrations
                 columns: new[] { "ProductID", "code", "name", "releaseDate", "yearlyPrice" },
                 values: new object[,]
                 {
-                    { 1, "22N39FD", "Toothbrush", new DateTime(2022, 3, 25, 0, 0, 0, 0, DateTimeKind.Local), 28.0 },
-                    { 2, "383IIFD", "Mug Holder", new DateTime(2022, 3, 25, 0, 0, 0, 0, DateTimeKind.Local), 32.920000000000002 },
-                    { 3, "00SEDR3", "Banana", new DateTime(2022, 3, 25, 0, 0, 0, 0, DateTimeKind.Local), 392.02999999999997 }
+                    { 1, "22N39FD", "Toothbrush", new DateTime(2022, 3, 28, 0, 0, 0, 0, DateTimeKind.Local), 28.0 },
+                    { 2, "383IIFD", "Mug Holder", new DateTime(2022, 3, 28, 0, 0, 0, 0, DateTimeKind.Local), 32.920000000000002 },
+                    { 3, "00SEDR3", "Banana", new DateTime(2022, 3, 28, 0, 0, 0, 0, DateTimeKind.Local), 392.02999999999997 }
                 });
 
             migrationBuilder.InsertData(
@@ -129,12 +129,12 @@ namespace A1.Migrations
             migrationBuilder.InsertData(
                 table: "Incidents",
                 columns: new[] { "IncidentID", "customerID", "dateClosed", "dateOpened", "description", "productID", "technicianID", "title" },
-                values: new object[] { 1, 1, new DateTime(2022, 3, 25, 18, 1, 42, 287, DateTimeKind.Local).AddTicks(9490), null, "Bleep bleep, bloop bloop", 1, 1, "Error launching program" });
+                values: new object[] { 1, 1, new DateTime(2022, 3, 28, 15, 22, 54, 726, DateTimeKind.Local).AddTicks(5030), null, "Bleep bleep, bloop bloop", 1, 1, "Error launching program" });
 
             migrationBuilder.InsertData(
                 table: "Incidents",
                 columns: new[] { "IncidentID", "customerID", "dateClosed", "dateOpened", "description", "productID", "technicianID", "title" },
-                values: new object[] { 2, 2, new DateTime(2022, 3, 25, 18, 1, 42, 287, DateTimeKind.Local).AddTicks(9500), null, "Bloop bloop, bleep bleep", 2, 2, "Redirect to wrong page" });
+                values: new object[] { 2, 2, new DateTime(2022, 3, 28, 15, 22, 54, 726, DateTimeKind.Local).AddTicks(5040), null, "Bloop bloop, bleep bleep", 2, 2, "Redirect to wrong page" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Incidents_customerID",

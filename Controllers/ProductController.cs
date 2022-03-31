@@ -9,7 +9,7 @@ namespace A1.Controllers
 
         public ProductController(dbContect ctx) => context = ctx;
 
-        public IActionResult List()
+        public ViewResult List()
         {
             List<Product> products = context.Products.OrderBy(p => p.ProductID).ToList();
             return View(products);
@@ -22,6 +22,20 @@ namespace A1.Controllers
             return View("Edit", new Product());
         }
 
+        [HttpPost]
+        public IActionResult Add(Product product)
+        {
+            ViewBag.Action = "Add";
+            if (ModelState.IsValid)
+            {
+                TempData["message"] = "Successfully Added: " + product.name;
+                context.Products.Add(product);
+                context.SaveChanges();
+                return RedirectToAction("List");
+            }
+            return View("Edit", product);
+        }
+
         [HttpGet]
         public IActionResult Edit(int id)
         {
@@ -31,27 +45,36 @@ namespace A1.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(Product products)
+        public IActionResult Edit(Product product)
         {
             if (ModelState.IsValid)
             {
-                if (products.ProductID == 0)
-                {
-                    context.Products.Add(products);
-                }
-                else
-                {
-                    context.Products.Update(products);
-                }
+                TempData["message"] = "Successfully Updated: " + product.name;
+                context.Products.Update(product);
+                context.SaveChanges();
+                return RedirectToAction("List");
             }
-            else
-            {
-                ViewBag.Action = (products.ProductID == 0) ? "Add" : "Edit";
-                return View(products);
-            }
+            return View(product);
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            ViewBag.Action = "Delete";
+            var products = context.Products.FirstOrDefault(c => c.ProductID == id);
+            TempData["name"] = products.name;
+            return View(products);
+        }
+
+        [HttpPost]
+        public RedirectToActionResult Delete(Product product)
+        {
+            TempData["message"] = "Successfully Deleted: " + product.name;
+            TempData["name"] = product.name;
+            context.Products.Remove(product);
             context.SaveChanges();
             return RedirectToAction("List");
         }
-
     }
 }
+

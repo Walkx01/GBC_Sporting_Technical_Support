@@ -1,0 +1,16 @@
+﻿@model Customer
+
+@{
+    ViewBag.Title = ViewBag.Action + " Product";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>Do you really want to delete <b>@TempData["name"]</b>?</p>
+
+<form asp-action="@ViewBag.Action">
+    <input type="hidden" asp-for="customerID" />
+    <button type="submit" class="btn btn-primary">Yes</button>
+    <a asp-action="List" class="btn btn-primary">No</a>
+</form>
+

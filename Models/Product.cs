@@ -16,7 +16,7 @@ namespace A1.Models
         public double? yearlyPrice { get; set; }
 
         [DataType(DataType.DateTime)]
-        public DateTime releaseDate { get; set; }
+        public DateTime releaseDate { get; set; } = DateTime.Now;
 
     }
 }

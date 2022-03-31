@@ -5,6 +5,12 @@
 
 <h2>Technicians Manager</h2>
 
+
+@if (TempData.Keys.Contains("message"))
+{
+    <h3>@TempData["message"]</h3>
+}
+
 <form method="post">
     <table class="table table-bordered table-striped">
         <thead>

@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using A1.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,49 +9,71 @@ namespace A1.Controllers
 
         public TechnicianController(dbContect ctx) => context = ctx;
 
-        public IActionResult List()
+        public ViewResult List()
         {
-            var technician = context.Technician.OrderBy(p => p.TechnicianID).ToList();
+            List<Technician> technician = context.Technician.OrderBy(p => p.TechnicianID).ToList();
             return View(technician);
         }
 
         [HttpGet]
-        public IActionResult Add()
+        public ViewResult Add()
         {
             ViewBag.Action = "Add";
             return View("Edit", new Technician());
+        }
+
+        [HttpPost]
+        public IActionResult Add(Technician technician)
+        {
+            ViewBag.Action = "Add";
+            if (ModelState.IsValid)
+            {
+                TempData["message"] = "Successfully Added: " + technician.name;
+                context.Technician.Add(technician);
+                context.SaveChanges();
+                return RedirectToAction("List");
+            }
+            return View("Edit", technician);
         }
 
         [HttpGet]
         public IActionResult Edit(int id)
         {
             ViewBag.Action = "Edit";
-            var product = context.Technician.Find(id);
-            return View(product);
+            var technician = context.Technician.Find(id);
+            return View(technician);
         }
 
         [HttpPost]
-        public IActionResult Edit(Technician technicians)
+        public IActionResult Edit(Technician technician)
         {
             if (ModelState.IsValid)
             {
-                if (technicians.TechnicianID == 0)
-                {
-                    context.Technician.Add(technicians);
-                }
-                else
-                {
-                    context.Technician.Update(technicians);
-                }
+                TempData["message"] = "Successfully Updated: " + technician.name;
+                context.Technician.Update(technician);
+                context.SaveChanges();
+                return RedirectToAction("List");
             }
-            else
-            {
-                ViewBag.Action = (technicians.TechnicianID == 0) ? "Add" : "Edit";
-                return View(technicians);
-            }
+            return View(technician);
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            ViewBag.Action = "Delete";
+            var technicians = context.Technician.FirstOrDefault(c => c.TechnicianID == id);
+            TempData["name"] = technicians.name;
+            return View(technicians);
+        }
+
+        [HttpPost]
+        public RedirectToActionResult Delete(Technician technician)
+        {
+            TempData["message"] = "Successfully Deleted: " + technician.name;
+            TempData["name"] = technician.name;
+            context.Technician.Remove(technician);
             context.SaveChanges();
             return RedirectToAction("List");
         }
-
     }
 }

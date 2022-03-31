@@ -5,6 +5,12 @@
 
 <h2>Incident Manager</h2>
 
+
+@if (TempData.Keys.Contains("message"))
+{
+    <h3>@TempData["message"]</h3>
+}
+
 <form method="post">
     <table class="table table-bordered table-striped">
         <thead>
@@ -24,7 +30,7 @@
                     <td> @incident.title</td>
                     <td> @incident.customer.firstName  e</td>
                     <td> @incident.product.name </td>
-                    <td> @incident.dateOpened </td>
+                    <td> @incident.dateOpened  </td>
                     <td>
                         <a class="btn btn-primary mx-2" asp-action="Edit" asp-route-id="@incident.IncidentID">Edit</a>
                     </td>

@@ -3,7 +3,7 @@
     ViewBag.Title = ViewBag.Action + " Product";
 }
 <h2>@ViewBag.Title</h2>
-<form asp-action="Edit" method="post">
+<form asp-action="@ViewBag.Action" method="post">
     <div asp-validation-summary="All" class="text-danger"></div>
     <div class="mb-3">
         <label asp-for="code" class="form-label">Code</label>
@@ -15,7 +15,7 @@
     </div>
     <div class="mb-3">
         <label asp-for="yearlyPrice" class="form-label">Yearly Price</label>
-        <input asp-for="yearlyPrice" class="form-control">
+        <input asp-for="yearlyPrice" class="form-control" placeholder="0.00">
     </div>
     <div class="mb-3">
         <label asp-for="releaseDate" class="form-label">Release Date</label>

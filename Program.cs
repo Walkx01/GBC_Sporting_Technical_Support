@@ -7,6 +7,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 builder.Services.AddDbContext<dbContect>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DBConnection")));
+builder.Services.AddRouting(options =>
+{
+    options.AppendTrailingSlash = true;
+    options.LowercaseUrls = true;   
+}
+);
 
 //services.AddDatabaseDeveloperPageExceptionFilter();
 

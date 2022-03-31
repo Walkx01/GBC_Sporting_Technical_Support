@@ -22,6 +22,20 @@ namespace A1.Controllers
             return View("Edit", new Customer());
         }
 
+        [HttpPost]
+        public IActionResult Add(Customer customer)
+        {
+            ViewBag.Action = "Add";
+            if (ModelState.IsValid)
+            {
+                TempData["message"] = "Successfully Added: " + customer.firstName + " " + customer.lastName;
+                context.Customers.Add(customer);
+                context.SaveChanges();
+                return RedirectToAction("List");
+            }
+            return View("Edit", customer);
+        }
+
         [HttpGet]
         public IActionResult Edit(int id)
         {
@@ -35,22 +49,32 @@ namespace A1.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (customer.customerID == 0)
-                {
-                    context.Customers.Add(customer);
-                }
-                else
-                {
-                    context.Customers.Update(customer);
-                }
+                TempData["message"] = "Successfully Updated: " + customer.firstName + " " + customer.lastName;
+                context.Customers.Update(customer);
+                context.SaveChanges();
+                return RedirectToAction("List");
             }
-            else
-            {
-                ViewBag.Action = (customer.customerID == 0) ? "Add" : "Edit";
-                return View(customer);
-            }
+            return View(customer);
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            ViewBag.Action = "Delete";
+            var customers = context.Customers.FirstOrDefault(c => c.customerID == id);
+            TempData["name"] = customers.firstName + " " + customers.lastName;
+            return View(customers);
+        }
+
+        [HttpPost]
+        public RedirectToActionResult Delete(Customer customer)
+        {
+            TempData["message"] = "Successfully Deleted: " + customer.firstName + " " + customer.lastName;
+            TempData["name"] = customer.firstName + " " + customer.lastName;
+            context.Customers.Remove(customer);
             context.SaveChanges();
             return RedirectToAction("List");
         }
     }
 }
+

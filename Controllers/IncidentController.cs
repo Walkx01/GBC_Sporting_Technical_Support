@@ -36,6 +36,23 @@ namespace A1.Controllers
             return View("Edit", new Incident());
         }
 
+        [HttpPost]
+        public IActionResult Add(Incident incident)
+        {
+            ViewBag.Product = context.Products.OrderBy(p => p.name).ToList();
+            ViewBag.Customer = context.Customers.OrderBy(c => c.firstName).ToList();
+            ViewBag.Technician = context.Technician.OrderBy(t => t.name).ToList();
+            ViewBag.Action = "Add";
+            if (ModelState.IsValid)
+            {
+                TempData["message"] = "Successfully Added: " + incident.title + " " + incident.title;
+                context.Incidents.Add(incident);
+                context.SaveChanges();
+                return RedirectToAction("List");
+            }
+            return View("Edit", incident);
+        }
+
         [HttpGet]
         public IActionResult Edit(int id)
         {
@@ -52,23 +69,32 @@ namespace A1.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (incident.IncidentID == 0)
-                {
-                    context.Incidents.Add(incident);
-                }
-                else
-                {
-                    context.Incidents.Update(incident);
-                }
+                TempData["message"] = "Successfully Updated: " + incident.title;
+                context.Incidents.Update(incident);
+                context.SaveChanges();
+                return RedirectToAction("List");
             }
-            else
-            {
-                ViewBag.Action = (incident.IncidentID == 0) ? "Add" : "Edit";
-                ViewBag.Product = context.Products.OrderBy(p => p.name).ToList();
-                ViewBag.Customer = context.Customers.OrderBy(c => c.firstName).ToList();
-                ViewBag.Technician = context.Technician.OrderBy(t => t.name).ToList();
-                return View(incident);
-            }
+            //ViewBag.Product = context.Products.OrderBy(p => p.name).ToList();
+            //ViewBag.Customer = context.Customers.OrderBy(c => c.firstName).ToList();
+            //ViewBag.Technician = context.Technician.OrderBy(t => t.name).ToList();
+            return View(incident);
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            ViewBag.Action = "Delete";
+            var incident = context.Incidents.FirstOrDefault(c => c.IncidentID == id);
+            TempData["name"] = incident.title;
+            return View(incident);
+        }
+
+        [HttpPost]
+        public RedirectToActionResult Delete(Incident incident)
+        {
+            TempData["message"] = "Successfully Deleted: " + incident.title;
+            TempData["title"] = incident.title;
+            context.Incidents.Remove(incident);
             context.SaveChanges();
             return RedirectToAction("List");
         }

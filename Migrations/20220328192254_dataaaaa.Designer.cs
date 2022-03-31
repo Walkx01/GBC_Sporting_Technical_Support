@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace A1.Migrations
 {
     [DbContext(typeof(dbContect))]
-    [Migration("20220325220142_dbC")]
-    partial class dbC
+    [Migration("20220328192254_dataaaaa")]
+    partial class dataaaaa
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -146,7 +146,7 @@ namespace A1.Migrations
                         {
                             IncidentID = 1,
                             customerID = 1,
-                            dateClosed = new DateTime(2022, 3, 25, 18, 1, 42, 287, DateTimeKind.Local).AddTicks(9490),
+                            dateClosed = new DateTime(2022, 3, 28, 15, 22, 54, 726, DateTimeKind.Local).AddTicks(5030),
                             description = "Bleep bleep, bloop bloop",
                             productID = 1,
                             technicianID = 1,
@@ -156,7 +156,7 @@ namespace A1.Migrations
                         {
                             IncidentID = 2,
                             customerID = 2,
-                            dateClosed = new DateTime(2022, 3, 25, 18, 1, 42, 287, DateTimeKind.Local).AddTicks(9500),
+                            dateClosed = new DateTime(2022, 3, 28, 15, 22, 54, 726, DateTimeKind.Local).AddTicks(5040),
                             description = "Bloop bloop, bleep bleep",
                             productID = 2,
                             technicianID = 2,
@@ -197,7 +197,7 @@ namespace A1.Migrations
                             ProductID = 1,
                             code = "22N39FD",
                             name = "Toothbrush",
-                            releaseDate = new DateTime(2022, 3, 25, 0, 0, 0, 0, DateTimeKind.Local),
+                            releaseDate = new DateTime(2022, 3, 28, 0, 0, 0, 0, DateTimeKind.Local),
                             yearlyPrice = 28.0
                         },
                         new
@@ -205,7 +205,7 @@ namespace A1.Migrations
                             ProductID = 2,
                             code = "383IIFD",
                             name = "Mug Holder",
-                            releaseDate = new DateTime(2022, 3, 25, 0, 0, 0, 0, DateTimeKind.Local),
+                            releaseDate = new DateTime(2022, 3, 28, 0, 0, 0, 0, DateTimeKind.Local),
                             yearlyPrice = 32.920000000000002
                         },
                         new
@@ -213,7 +213,7 @@ namespace A1.Migrations
                             ProductID = 3,
                             code = "00SEDR3",
                             name = "Banana",
-                            releaseDate = new DateTime(2022, 3, 25, 0, 0, 0, 0, DateTimeKind.Local),
+                            releaseDate = new DateTime(2022, 3, 28, 0, 0, 0, 0, DateTimeKind.Local),
                             yearlyPrice = 392.02999999999997
                         });
                 });

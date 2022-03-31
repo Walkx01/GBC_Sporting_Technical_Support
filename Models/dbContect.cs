@@ -106,7 +106,8 @@ namespace A1.Models
 					technicianID = 1,
 					title = "Error launching program",
 					description = "Bleep bleep, bloop bloop",
-					dateClosed = DateTime.Now
+					dateClosed = DateTime.Now,
+					dateOpened = DateTime.Now
 				},
 				new Incident
 				{
@@ -116,7 +117,8 @@ namespace A1.Models
 					technicianID = 2,
 					title = "Redirect to wrong page",
 					description = "Bloop bloop, bleep bleep",
-					dateClosed = DateTime.Now
+					dateClosed = DateTime.Now,
+					dateOpened = DateTime.Now
 				}
 				);
 

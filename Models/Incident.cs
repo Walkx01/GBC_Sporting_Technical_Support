@@ -25,7 +25,8 @@ namespace A1.Models
         public DateTime? dateClosed { get; set; }
 
         [DataType(DataType.DateTime)]
-        public DateTime? dateOpened { get; set; }
+        public DateTime? dateOpened { get; set; } = DateTime.Now;
+
         public Customer? customer { get; set; }
 
         public Product? product { get; set; }
