@@ -18,6 +18,7 @@ namespace A1.Models
         public string? title { get; set; }
 
         [Required(ErrorMessage = "Required: Description")]
+        [StringLength(50,ErrorMessage ="Please keep description to under 50 characters long")]
         public string? description { get; set; }
 
         [Required(ErrorMessage = "Required: Date Closed")]

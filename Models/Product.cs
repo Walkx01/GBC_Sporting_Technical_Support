@@ -10,6 +10,7 @@ namespace A1.Models
         public string? code { get; set; }
 
         [Required(ErrorMessage = "Required: Name")]
+        [RegularExpression("^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$", ErrorMessage = "Name cannot contain any special characters")]
         public string? name { get; set; }
 
         [Required(ErrorMessage = "Required: Yearly Price")]
