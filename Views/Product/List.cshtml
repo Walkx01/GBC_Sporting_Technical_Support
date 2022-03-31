@@ -7,7 +7,10 @@
 
 @if (TempData.Keys.Contains("message"))
 {
-    <h3>@TempData["message"]</h3>
+    <div class="alert alert-dismissible alert-success">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <strong>@TempData["message"]</strong>
+    </div>
 }
 
 <form method="post">

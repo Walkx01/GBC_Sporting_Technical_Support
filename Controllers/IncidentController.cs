@@ -85,7 +85,7 @@ namespace A1.Controllers
         {
             ViewBag.Action = "Delete";
             var incident = context.Incidents.FirstOrDefault(c => c.IncidentID == id);
-            TempData["name"] = incident.title;
+            TempData["title"] = incident.title;
             return View(incident);
         }
 
