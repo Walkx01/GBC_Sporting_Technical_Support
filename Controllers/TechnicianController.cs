@@ -9,6 +9,7 @@ namespace A1.Controllers
 
         public TechnicianController(dbContect ctx) => context = ctx;
 
+        [Route("Technicians")]
         public ViewResult List()
         {
             List<Technician> technician = context.Technician.OrderBy(p => p.TechnicianID).ToList();

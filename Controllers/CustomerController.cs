@@ -9,6 +9,7 @@ namespace A1.Controllers
 
         public CustomerController(dbContect ctx) => context = ctx;
 
+        [Route("Customers")]
         public IActionResult List()
         {
             var customer = context.Customers.OrderBy(c => c.customerID).ToList();

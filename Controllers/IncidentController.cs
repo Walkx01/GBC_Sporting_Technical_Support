@@ -14,6 +14,7 @@ namespace A1.Controllers
 
         public IncidentController(dbContect ctx) => context = ctx;
 
+        [Route("Incidents")]
         public IActionResult List()
         {
             var incident = context.Incidents

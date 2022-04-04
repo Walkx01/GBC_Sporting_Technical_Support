@@ -9,6 +9,7 @@ namespace A1.Controllers
 
         public ProductController(dbContect ctx) => context = ctx;
 
+        [Route("Products")]
         public ViewResult List()
         {
             List<Product> products = context.Products.OrderBy(p => p.ProductID).ToList();
