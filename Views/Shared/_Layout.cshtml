@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@{
+    string controller = ViewContext.RouteData.Values["controller"].ToString();
+    string action = ViewContext.RouteData.Values["action"].ToString();
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -10,32 +14,31 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-controller="Home" asp-action="Index">SportsPro</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <div class="collapse navbar-collapse" id="navbarColor02">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link  @(controller == "Home" && action == "Index" ? "active": ""))" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Product" asp-action="List">Products</a>
+                            <a class="nav-link @(controller == "Product" ? "active" : "")" asp-controller="Product" asp-action="List">Products</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Technician" asp-action="List">Technician</a>
+                            <a class="nav-link @(controller == "Technician" ? "active" : "")" asp-controller="Technician" asp-action="List">Technician</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Customer" asp-action="List">Customer</a>
+                            <a class="nav-link @(controller == "Customer" ? "active" : "")" asp-controller="Customer" asp-action="List">Customer</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Incident" asp-action="List">Incident</a>
+                            <a class="nav-link @(controller == "Incident" ? "active" : "")" asp-controller="Incident" asp-action="List">Incident</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Home" asp-action="About">About</a>
+                            <a class="nav-link @(controller == "Home" && action == "About" ? "active" : "")" asp-controller="Home" asp-action="About">About</a>
                         </li>
                     </ul>
                 </div>

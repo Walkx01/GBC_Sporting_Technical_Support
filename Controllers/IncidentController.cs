@@ -31,9 +31,9 @@ namespace A1.Controllers
         public IActionResult Add()
         {
             ViewBag.Action = "Add";
-            ViewBag.Product = context.Products.OrderBy(p => p.name).ToList();
-            ViewBag.Customer = context.Customers.OrderBy(c => c.firstName).ToList();
-            ViewBag.Technician = context.Technician.OrderBy(t => t.name).ToList();
+            ViewBag.Product = context.Products.ToList();
+            ViewBag.Customer = context.Customers.ToList();
+            ViewBag.Technician = context.Technician.ToList();
             return View("Edit", new Incident());
         }
 
