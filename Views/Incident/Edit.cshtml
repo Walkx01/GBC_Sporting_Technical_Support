@@ -34,7 +34,7 @@
     <div class="mb-3">
         <label asp-for="technician" class="form-label">Technician</label>
         <select class="form-select" asp-for="technicianID">
-            <option selected>Assign a technician...</option>
+            <option value="" >Assign a technician...</option>
             @foreach (Technician t in ViewBag.Technician)
             {
                 <option value="@t.TechnicianID">@t.name</option>
