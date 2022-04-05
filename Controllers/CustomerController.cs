@@ -19,6 +19,7 @@ namespace A1.Controllers
         [HttpGet]
         public IActionResult Add()
         {
+            ViewData["Countries"] = context.Countries.OrderBy(c => c.Name).ToList();
             ViewBag.Action = "Add";
             return View("Edit", new Customer());
         }
@@ -26,6 +27,7 @@ namespace A1.Controllers
         [HttpPost]
         public IActionResult Add(Customer customer)
         {
+          
             ViewBag.Action = "Add";
             if (ModelState.IsValid)
             {
@@ -40,6 +42,7 @@ namespace A1.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
+            ViewData["Countries"] = context.Countries.OrderBy(c => c.Name).ToList();
             ViewBag.Action = "Edit";
             var customer = context.Customers.Find(id);
             return View(customer);

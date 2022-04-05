@@ -7,6 +7,8 @@ namespace A1.Models
 	{
         public dbContect(DbContextOptions<dbContect> options) : base(options) { }
 
+
+		public DbSet<Country> Countries { get; set; }
 		public DbSet<Customer> Customers { get; set; }
 		public DbSet<Product> Products { get; set; }
 		public DbSet<Technician> Technician { get; set; }
@@ -14,6 +16,12 @@ namespace A1.Models
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
+
+
+			modelBuilder.Entity<Country>().HasData(
+				new Country { CountryId = 1, Name = "Bolivia" },
+				new Country { CountryId = 2, Name = "Cameroon" }
+			);
 			modelBuilder.Entity<Product>().HasData(
 				new Product
 				{
@@ -79,7 +87,7 @@ namespace A1.Models
 					city = "Toronto",
 					state = "Ontario",
 					postCode = "H4A 1H1",
-					country = "Canada",
+					CountryId = 1,
 					email = "mergitu.m.megersa@gmail.com",
 					phone = "525-223-9201"
 				},
@@ -92,7 +100,7 @@ namespace A1.Models
 					city = "Phnom Penh",
 					state = "Ta Khmau",
 					postCode = "12100",
-					country = "Cambodia",
+					CountryId = 1,
 					email = "cookietamam@gmail.com",
 					phone = "456-995-3795"
 				}

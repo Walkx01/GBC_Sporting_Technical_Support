@@ -6,6 +6,8 @@ namespace A1.Models
 	{
         public int customerID { get; set; }
 
+       
+
         [Required(ErrorMessage = "Required: First Name")]
         [RegularExpression("^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$", ErrorMessage = "Last name cannot contain any special characters")]
         public string? firstName { get; set; }
@@ -26,14 +28,19 @@ namespace A1.Models
         [Required(ErrorMessage = "Required: Postal Code")]
         public string? postCode { get; set; }
 
-        [Required(ErrorMessage = "Required: Country")]
-        public string? country { get; set; }
+       
+
 
         [EmailAddress(ErrorMessage = "Please check the format of you email address")]
         public string? email { get; set; }
 
         [Phone]
         public string? phone { get; set; }
+
+        [Required(ErrorMessage = "Required: Country")]
+        // public string? country { get; set; }
+        public int CountryId { get; set; }
+        public virtual Country? Country { get; set; }
     }
 }
 

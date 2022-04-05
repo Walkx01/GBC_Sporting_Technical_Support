@@ -22,6 +22,34 @@ namespace A1.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("A1.Models.Country", b =>
+                {
+                    b.Property<int>("CountryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CountryId"), 1L, 1);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CountryId");
+
+                    b.ToTable("Countries");
+
+                    b.HasData(
+                        new
+                        {
+                            CountryId = 1,
+                            Name = "Bolivia"
+                        },
+                        new
+                        {
+                            CountryId = 2,
+                            Name = "Cameroon"
+                        });
+                });
+
             modelBuilder.Entity("A1.Models.Customer", b =>
                 {
                     b.Property<int>("customerID")
@@ -30,15 +58,14 @@ namespace A1.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("customerID"), 1L, 1);
 
+                    b.Property<int>("CountryId")
+                        .HasColumnType("int");
+
                     b.Property<string>("address")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("city")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("country")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -66,15 +93,17 @@ namespace A1.Migrations
 
                     b.HasKey("customerID");
 
+                    b.HasIndex("CountryId");
+
                     b.ToTable("Customers");
 
                     b.HasData(
                         new
                         {
                             customerID = 1,
+                            CountryId = 1,
                             address = "2040 Bunny Road",
                             city = "Toronto",
-                            country = "Canada",
                             email = "mergitu.m.megersa@gmail.com",
                             firstName = "Mergitu",
                             lastName = "Megersa",
@@ -85,9 +114,9 @@ namespace A1.Migrations
                         new
                         {
                             customerID = 2,
+                            CountryId = 1,
                             address = "440 Round Avenue",
                             city = "Phnom Penh",
-                            country = "Cambodia",
                             email = "cookietamam@gmail.com",
                             firstName = "Cookie",
                             lastName = "Aba Tamam",
@@ -117,7 +146,8 @@ namespace A1.Migrations
 
                     b.Property<string>("description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("productID")
                         .HasColumnType("int");
@@ -144,7 +174,8 @@ namespace A1.Migrations
                         {
                             IncidentID = 1,
                             customerID = 1,
-                            dateClosed = new DateTime(2022, 3, 28, 15, 22, 54, 726, DateTimeKind.Local).AddTicks(5030),
+                            dateClosed = new DateTime(2022, 4, 4, 20, 20, 32, 478, DateTimeKind.Local).AddTicks(6580),
+                            dateOpened = new DateTime(2022, 4, 4, 20, 20, 32, 478, DateTimeKind.Local).AddTicks(6581),
                             description = "Bleep bleep, bloop bloop",
                             productID = 1,
                             technicianID = 1,
@@ -154,7 +185,8 @@ namespace A1.Migrations
                         {
                             IncidentID = 2,
                             customerID = 2,
-                            dateClosed = new DateTime(2022, 3, 28, 15, 22, 54, 726, DateTimeKind.Local).AddTicks(5040),
+                            dateClosed = new DateTime(2022, 4, 4, 20, 20, 32, 478, DateTimeKind.Local).AddTicks(6585),
+                            dateOpened = new DateTime(2022, 4, 4, 20, 20, 32, 478, DateTimeKind.Local).AddTicks(6587),
                             description = "Bloop bloop, bleep bleep",
                             productID = 2,
                             technicianID = 2,
@@ -195,7 +227,7 @@ namespace A1.Migrations
                             ProductID = 1,
                             code = "22N39FD",
                             name = "Toothbrush",
-                            releaseDate = new DateTime(2022, 3, 28, 0, 0, 0, 0, DateTimeKind.Local),
+                            releaseDate = new DateTime(2022, 4, 4, 0, 0, 0, 0, DateTimeKind.Local),
                             yearlyPrice = 28.0
                         },
                         new
@@ -203,7 +235,7 @@ namespace A1.Migrations
                             ProductID = 2,
                             code = "383IIFD",
                             name = "Mug Holder",
-                            releaseDate = new DateTime(2022, 3, 28, 0, 0, 0, 0, DateTimeKind.Local),
+                            releaseDate = new DateTime(2022, 4, 4, 0, 0, 0, 0, DateTimeKind.Local),
                             yearlyPrice = 32.920000000000002
                         },
                         new
@@ -211,7 +243,7 @@ namespace A1.Migrations
                             ProductID = 3,
                             code = "00SEDR3",
                             name = "Banana",
-                            releaseDate = new DateTime(2022, 3, 28, 0, 0, 0, 0, DateTimeKind.Local),
+                            releaseDate = new DateTime(2022, 4, 4, 0, 0, 0, 0, DateTimeKind.Local),
                             yearlyPrice = 392.02999999999997
                         });
                 });
@@ -264,6 +296,17 @@ namespace A1.Migrations
                         });
                 });
 
+            modelBuilder.Entity("A1.Models.Customer", b =>
+                {
+                    b.HasOne("A1.Models.Country", "Country")
+                        .WithMany("Customers")
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Country");
+                });
+
             modelBuilder.Entity("A1.Models.Incident", b =>
                 {
                     b.HasOne("A1.Models.Customer", "customer")
@@ -287,6 +330,11 @@ namespace A1.Migrations
                     b.Navigation("product");
 
                     b.Navigation("technician");
+                });
+
+            modelBuilder.Entity("A1.Models.Country", b =>
+                {
+                    b.Navigation("Customers");
                 });
 #pragma warning restore 612, 618
         }
