@@ -46,7 +46,7 @@ namespace A1.Controllers
             ViewBag.Action = "Add";
             if (ModelState.IsValid)
             {
-                TempData["message"] = "Successfully Added: " + incident.title + " " + incident.title;
+                TempData["message"] = "Successfully Added incident: " + incident.title + " " + incident.title;
                 context.Incidents.Add(incident);
                 context.SaveChanges();
                 return RedirectToAction("List");
@@ -70,7 +70,7 @@ namespace A1.Controllers
         {
             if (ModelState.IsValid)
             {
-                TempData["message"] = "Successfully Updated: " + incident.title;
+                TempData["message"] = "Successfully Updated incident: " + incident.title;
                 context.Incidents.Update(incident);
                 context.SaveChanges();
                 return RedirectToAction("List");
@@ -93,7 +93,7 @@ namespace A1.Controllers
         [HttpPost]
         public RedirectToActionResult Delete(Incident incident)
         {
-            TempData["message"] = "Successfully Deleted: " + incident.title;
+            TempData["message"] = "Successfully Deleted incident: " + incident.title;
             TempData["title"] = incident.title;
             context.Incidents.Remove(incident);
             context.SaveChanges();
