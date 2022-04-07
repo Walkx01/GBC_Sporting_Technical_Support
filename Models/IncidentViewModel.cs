@@ -2,12 +2,11 @@
 {
     public class IncidentViewModel
     {
-        public Incident incident { get; set; }
-        public Customer customer { get; set; }
-        public Product product { get; set; }
-        public Technician technician { get; set; }
-
-        public string operation { get; set; }
-
+        public Incident Incident { get; set; }
+        public List<Product> Products { get; set; }
+        public List<Technician> Technicians { get; set; }
+        public List<Customer> Customer { get; set; }
+        public string filter { get; set; } = "all";
+        public string page { get; set; }
     }
 }

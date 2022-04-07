@@ -5,11 +5,20 @@
 
 <h2>Incident Manager</h2>
 
-
-<
-
-
 <form method="post">
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+            <a class="nav-link" asp-action="List" asp-controller="Incident" asp-route-filter="all">All incidents</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-action="List" asp-controller="Incident" asp-route-filter="unassigned">Unassigned incidents </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-action="List" asp-controller="Incident" asp-route-filter="open">Open incidents</a>
+        </li>
+
+    </ul>
+
     <table class="table table-bordered table-striped">
         <thead>
             <tr>

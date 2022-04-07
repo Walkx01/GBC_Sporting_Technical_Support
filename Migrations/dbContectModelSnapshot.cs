@@ -174,8 +174,8 @@ namespace A1.Migrations
                         {
                             IncidentID = 1,
                             customerID = 1,
-                            dateClosed = new DateTime(2022, 4, 4, 20, 20, 32, 478, DateTimeKind.Local).AddTicks(6580),
-                            dateOpened = new DateTime(2022, 4, 4, 20, 20, 32, 478, DateTimeKind.Local).AddTicks(6581),
+                            dateClosed = new DateTime(2022, 4, 7, 14, 47, 3, 204, DateTimeKind.Local).AddTicks(3010),
+                            dateOpened = new DateTime(2022, 4, 7, 14, 47, 3, 204, DateTimeKind.Local).AddTicks(3020),
                             description = "Bleep bleep, bloop bloop",
                             productID = 1,
                             technicianID = 1,
@@ -185,8 +185,8 @@ namespace A1.Migrations
                         {
                             IncidentID = 2,
                             customerID = 2,
-                            dateClosed = new DateTime(2022, 4, 4, 20, 20, 32, 478, DateTimeKind.Local).AddTicks(6585),
-                            dateOpened = new DateTime(2022, 4, 4, 20, 20, 32, 478, DateTimeKind.Local).AddTicks(6587),
+                            dateClosed = new DateTime(2022, 4, 7, 14, 47, 3, 204, DateTimeKind.Local).AddTicks(3030),
+                            dateOpened = new DateTime(2022, 4, 7, 14, 47, 3, 204, DateTimeKind.Local).AddTicks(3040),
                             description = "Bloop bloop, bleep bleep",
                             productID = 2,
                             technicianID = 2,
@@ -227,7 +227,7 @@ namespace A1.Migrations
                             ProductID = 1,
                             code = "22N39FD",
                             name = "Toothbrush",
-                            releaseDate = new DateTime(2022, 4, 4, 0, 0, 0, 0, DateTimeKind.Local),
+                            releaseDate = new DateTime(2022, 4, 7, 0, 0, 0, 0, DateTimeKind.Local),
                             yearlyPrice = 28.0
                         },
                         new
@@ -235,7 +235,7 @@ namespace A1.Migrations
                             ProductID = 2,
                             code = "383IIFD",
                             name = "Mug Holder",
-                            releaseDate = new DateTime(2022, 4, 4, 0, 0, 0, 0, DateTimeKind.Local),
+                            releaseDate = new DateTime(2022, 4, 7, 0, 0, 0, 0, DateTimeKind.Local),
                             yearlyPrice = 32.920000000000002
                         },
                         new
@@ -243,7 +243,7 @@ namespace A1.Migrations
                             ProductID = 3,
                             code = "00SEDR3",
                             name = "Banana",
-                            releaseDate = new DateTime(2022, 4, 4, 0, 0, 0, 0, DateTimeKind.Local),
+                            releaseDate = new DateTime(2022, 4, 7, 0, 0, 0, 0, DateTimeKind.Local),
                             yearlyPrice = 392.02999999999997
                         });
                 });

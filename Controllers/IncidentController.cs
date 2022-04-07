@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using A1.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -15,15 +11,46 @@ namespace A1.Controllers
         public IncidentController(dbContect ctx) => context = ctx;
 
         [Route("Incidents")]
-        public IActionResult List()
+        public IActionResult List(string filter = "all")
         {
-            var incident = context.Incidents
-                .Include(i => i.customer)
-                .Include(i => i.product)
-                .Include(i => i.technician)
-                .OrderBy(i => i.IncidentID)
-                .ToList();
-            return View(incident);
+            var vm = new IncidentViewModel();
+            if (filter.ToLower() == "all")
+            {
+                var inci = context.Incidents
+                    .Include(i => i.customer)
+                    .Include(i => i.product)
+                    .Include(i => i.technician)
+                    .OrderBy(i => i.IncidentID)
+                    .ToList();
+                return View(inci);
+            }
+            else if (filter.ToLower() == "unassigned")
+            {
+                var inci = context.Incidents
+                    .Include(i => i.customer)
+                    .Include(i => i.product)
+                    .Include(i => i.technician)
+                    .OrderBy(i => i.IncidentID)
+                    .ToList();
+                return View(inci);
+            }
+            else
+            {
+                var inci = context.Incidents
+                    .Include(i => i.customer)
+                    .Include(i => i.product)
+                    .Include(i => i.technician)
+                    .OrderBy(i => i.IncidentID)
+                    .ToList();
+                return View(inci);
+            }
+            //var incident = context.Incidents
+            //    .Include(i => i.customer)
+            //    .Include(i => i.product)
+            //    .Include(i => i.technician)
+            //    .OrderBy(i => i.IncidentID)
+            //    .ToList();
+            //return View(incident);
         }
 
 
