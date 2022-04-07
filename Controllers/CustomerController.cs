@@ -29,11 +29,11 @@ namespace A1.Controllers
         {
           
             ViewBag.Action = "Add";
+            ViewData["Countries"] = context.Countries.OrderBy(c => c.Name).ToList();
             if (ModelState.IsValid)
             {
                 if (context.Customers.Any(c => c.email == customer.email)) {
                     TempData["error"]  = " this email is arealdy registered: ";
-                    ViewData["Countries"] = context.Countries.OrderBy(c => c.Name).ToList();
                     return View("Edit", customer);
                 }
                 else
@@ -61,13 +61,17 @@ namespace A1.Controllers
         [HttpPost]
         public IActionResult Edit(Customer customer)
         {
+
+            ViewBag.Action = "Edit";
             if (ModelState.IsValid)
             {
+
                 TempData["message"] = "Successfully Updated: " + customer.firstName + " " + customer.lastName;
                 context.Customers.Update(customer);
                 context.SaveChanges();
                 return RedirectToAction("List");
             }
+           
             return View(customer);
         }
 

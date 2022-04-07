@@ -106,6 +106,7 @@ namespace A1.Controllers
             //ViewBag.Product = context.Products.OrderBy(p => p.name).ToList();
             //ViewBag.Customer = context.Customers.OrderBy(c => c.firstName).ToList();
             //ViewBag.Technician = context.Technician.OrderBy(t => t.name).ToList();
+            ViewBag.Action = "Edit";
             return View(incident);
         }
 
