@@ -4,15 +4,16 @@
 	Technician
 </h1>
 
-<form asp-action="@ViewBag.Action" method="post">
+ 
+<form  asp-controller="Incident" asp-action="@ViewBag.Action" method="post">
     <div asp-validation-summary="All" class="text-danger"></div>
   
     <div class="row mb-3">
         <div class="col-sm-10">
-            <select class="form-select " >
+            <select class="form-select">
                 @foreach (Technician c in Model)
             {
-                <option value="@c.name">@c.name</option>
+                <option  asp-for="@c.TechnicianID" value="@c.TechnicianID">@c.name</option>
             }
             </select>
         </div>

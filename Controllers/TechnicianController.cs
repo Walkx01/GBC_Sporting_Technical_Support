@@ -11,10 +11,14 @@ namespace A1.Controllers
 
 
         public ViewResult ListTechnicians()
-        {
-            List<Technician> technician = context.Technician.OrderBy(p => p.TechnicianID).ToList();
-            return View("page1" ,technician);
-        }
+         {
+            @ViewBag.Action = "ListSpecificIncdient";
+             List<Technician> technician = context.Technician.OrderBy(p => p.TechnicianID).ToList();
+             return View("page1" ,technician);
+         }
+
+
+       
 
         [Route("Technicians")]
         public ViewResult List()
@@ -23,7 +27,9 @@ namespace A1.Controllers
             return View(technician);
         }
 
-      
+       
+
+
 
         [HttpGet]
         public ViewResult Add()

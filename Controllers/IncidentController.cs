@@ -26,6 +26,16 @@ namespace A1.Controllers
             return View(incident);
         }
 
+        public IActionResult ListSpecificIncdient()
+        {
+            var incident = context.Incidents
+                .Include(i => i.customer)
+                .Include(i => i.product)
+                .Include(i => i.technician).Where(i => i.technicianID == 1).
+                ToList();
+            return View("pag1",incident);
+        }
+
 
         [HttpGet]
         public IActionResult Add()
