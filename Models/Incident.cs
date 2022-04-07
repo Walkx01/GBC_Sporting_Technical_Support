@@ -21,9 +21,8 @@ namespace A1.Models
         [StringLength(50,ErrorMessage ="Please keep description to under 50 characters long")]
         public string? description { get; set; }
 
-        [Required(ErrorMessage = "Required: Date Closed")]
         [DataType(DataType.DateTime)]
-        public DateTime? dateClosed { get; set; }
+        public DateTime? dateClosed { get; set; } = null;
 
         [DataType(DataType.DateTime)]
         public DateTime? dateOpened { get; set; } = DateTime.Now;

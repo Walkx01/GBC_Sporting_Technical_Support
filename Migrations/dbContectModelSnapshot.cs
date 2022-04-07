@@ -138,7 +138,6 @@ namespace A1.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("dateClosed")
-                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("dateOpened")
@@ -174,8 +173,8 @@ namespace A1.Migrations
                         {
                             IncidentID = 1,
                             customerID = 1,
-                            dateClosed = new DateTime(2022, 4, 7, 14, 47, 3, 204, DateTimeKind.Local).AddTicks(3010),
-                            dateOpened = new DateTime(2022, 4, 7, 14, 47, 3, 204, DateTimeKind.Local).AddTicks(3020),
+                            dateClosed = new DateTime(2022, 4, 7, 16, 13, 38, 27, DateTimeKind.Local).AddTicks(7120),
+                            dateOpened = new DateTime(2022, 4, 7, 16, 13, 38, 27, DateTimeKind.Local).AddTicks(7120),
                             description = "Bleep bleep, bloop bloop",
                             productID = 1,
                             technicianID = 1,
@@ -185,8 +184,8 @@ namespace A1.Migrations
                         {
                             IncidentID = 2,
                             customerID = 2,
-                            dateClosed = new DateTime(2022, 4, 7, 14, 47, 3, 204, DateTimeKind.Local).AddTicks(3030),
-                            dateOpened = new DateTime(2022, 4, 7, 14, 47, 3, 204, DateTimeKind.Local).AddTicks(3040),
+                            dateClosed = new DateTime(2022, 4, 7, 16, 13, 38, 27, DateTimeKind.Local).AddTicks(7130),
+                            dateOpened = new DateTime(2022, 4, 7, 16, 13, 38, 27, DateTimeKind.Local).AddTicks(7140),
                             description = "Bloop bloop, bleep bleep",
                             productID = 2,
                             technicianID = 2,

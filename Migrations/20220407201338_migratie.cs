@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace A1.Migrations
 {
-    public partial class migrate : Migration
+    public partial class migratie : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -91,7 +91,7 @@ namespace A1.Migrations
                     technicianID = table.Column<int>(type: "int", nullable: true),
                     title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     description = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    dateClosed = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    dateClosed = table.Column<DateTime>(type: "datetime2", nullable: true),
                     dateOpened = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -158,12 +158,12 @@ namespace A1.Migrations
             migrationBuilder.InsertData(
                 table: "Incidents",
                 columns: new[] { "IncidentID", "customerID", "dateClosed", "dateOpened", "description", "productID", "technicianID", "title" },
-                values: new object[] { 1, 1, new DateTime(2022, 4, 7, 14, 47, 3, 204, DateTimeKind.Local).AddTicks(3010), new DateTime(2022, 4, 7, 14, 47, 3, 204, DateTimeKind.Local).AddTicks(3020), "Bleep bleep, bloop bloop", 1, 1, "Error launching program" });
+                values: new object[] { 1, 1, new DateTime(2022, 4, 7, 16, 13, 38, 27, DateTimeKind.Local).AddTicks(7120), new DateTime(2022, 4, 7, 16, 13, 38, 27, DateTimeKind.Local).AddTicks(7120), "Bleep bleep, bloop bloop", 1, 1, "Error launching program" });
 
             migrationBuilder.InsertData(
                 table: "Incidents",
                 columns: new[] { "IncidentID", "customerID", "dateClosed", "dateOpened", "description", "productID", "technicianID", "title" },
-                values: new object[] { 2, 2, new DateTime(2022, 4, 7, 14, 47, 3, 204, DateTimeKind.Local).AddTicks(3030), new DateTime(2022, 4, 7, 14, 47, 3, 204, DateTimeKind.Local).AddTicks(3040), "Bloop bloop, bleep bleep", 2, 2, "Redirect to wrong page" });
+                values: new object[] { 2, 2, new DateTime(2022, 4, 7, 16, 13, 38, 27, DateTimeKind.Local).AddTicks(7130), new DateTime(2022, 4, 7, 16, 13, 38, 27, DateTimeKind.Local).AddTicks(7140), "Bloop bloop, bleep bleep", 2, 2, "Redirect to wrong page" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Customers_CountryId",

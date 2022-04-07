@@ -41,7 +41,7 @@ namespace A1.Controllers
                     .Include(i => i.customer)
                     .Include(i => i.product)
                     .Include(i => i.technician)
-                    .OrderBy(i => i.IncidentID)
+                    .OrderBy(i => i.IncidentID).Where(i => i.dateClosed == null)
                     .ToList();
                 return View(inci);
             }
