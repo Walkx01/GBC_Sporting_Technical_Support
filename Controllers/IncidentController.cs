@@ -1,5 +1,6 @@
 using A1.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace A1.Controllers
@@ -29,7 +30,7 @@ namespace A1.Controllers
                 var inci = context.Incidents
                     .Include(i => i.customer)
                     .Include(i => i.product)
-                    .Include(i => i.technician)
+                    .Include(i => i.technician).Where(t => t.technicianID == null)
                     .OrderBy(i => i.IncidentID)
                     .ToList();
                 return View(inci);
@@ -60,7 +61,7 @@ namespace A1.Controllers
             ViewBag.Action = "Add";
             ViewBag.Product = context.Products.ToList();
             ViewBag.Customer = context.Customers.ToList();
-            ViewBag.Technician = context.Technician.ToList();
+            ViewBag.Technician = new SelectList(context.Technician, "TechnicianID", "name");
             return View("Edit", new Incident());
         }
 
@@ -69,7 +70,7 @@ namespace A1.Controllers
         {
             ViewBag.Product = context.Products.OrderBy(p => p.name).ToList();
             ViewBag.Customer = context.Customers.OrderBy(c => c.firstName).ToList();
-            ViewBag.Technician = context.Technician.OrderBy(t => t.name).ToList();
+            ViewBag.Technician = new SelectList(context.Technician, "TechnicianID", "name");
             ViewBag.Action = "Add";
             if (ModelState.IsValid)
             {

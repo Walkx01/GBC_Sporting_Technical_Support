@@ -28,7 +28,8 @@
 
     <div class="mb-3">
         <label asp-for="technician" class="form-label">Technician</label>
-        <select class="form-select" asp-for="technicianID" asp-items="@(new SelectList(ViewBag.Technician, "TechnicianID", "name", Model.technicianID.ToString()))"></select>
+        <select class="form-select" asp-for="technicianID" asp-items="@ViewBag.Technician"><option value="">Choose a Technician...</option></select>
+        @*<select class="form-select" asp-for="technicianID" asp-items="@(new SelectList(ViewBag.Technician, "TechnicianID", "name", Model.technicianID.ToString()))"></select>*@
     </div>
 
     <div class="mb-3">
