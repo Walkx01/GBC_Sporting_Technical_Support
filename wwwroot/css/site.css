@@ -16,3 +16,14 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+/* Selects any invalid <input> */
+input:invalid {
+    border-color: red;
+    background-color: lightpink;
+}
+
+select:invalid {
+    border-color: red;
+    background-color: lightpink;
+}

@@ -31,10 +31,20 @@ namespace A1.Controllers
             ViewBag.Action = "Add";
             if (ModelState.IsValid)
             {
-                TempData["message"] = "Successfully Added: " + customer.firstName + " " + customer.lastName;
-                context.Customers.Add(customer);
-                context.SaveChanges();
-                return RedirectToAction("List");
+                if (context.Customers.Any(c => c.email == customer.email)) {
+                    TempData["error"]  = " this email is arealdy registered: ";
+                    ViewData["Countries"] = context.Countries.OrderBy(c => c.Name).ToList();
+                    return View("Edit", customer);
+                }
+                else
+                {
+                    TempData["message"] = "Successfully Added: " + customer.firstName + " " + customer.lastName;
+                    context.Customers.Add(customer);
+                    context.SaveChanges();
+                    return RedirectToAction("List");
+                }
+
+               
             }
             return View("Edit", customer);
         }

@@ -57,6 +57,16 @@
         <strong>@TempData["message"]</strong> 
     </div>
 }
+
+   <!-- display error  message-->
+            @if (TempData.Keys.Contains("error"))
+{
+
+    <div class="alert alert-dismissible alert-danger">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <strong>@TempData["error"]</strong> 
+    </div>
+}
             @RenderBody()
         </main>
     </div>
