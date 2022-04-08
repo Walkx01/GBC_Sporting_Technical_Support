@@ -10,7 +10,7 @@ builder.Services.AddDbContext<dbContect>(options => options.UseSqlServer(builder
 builder.Services.AddRouting(options =>
 {
     options.AppendTrailingSlash = true;
-    options.LowercaseUrls = true;   
+    options.LowercaseUrls = true;
 }
 );
 
