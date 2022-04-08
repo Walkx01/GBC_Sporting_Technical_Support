@@ -10,71 +10,63 @@
 <form asp-action="@ViewBag.Action" method="post">
     <div asp-validation-summary="All" class="text-danger"></div>
     <div class="row mb-3">
-        <label asp-for="firstName" class="col-sm-2 col-form-label"  >First Name</label>
+        <label asp-for="firstName" class="col-sm-2 col-form-label">First Name</label>
         <div class="col-sm-10">
-            <input asp-for="firstName" class="form-control" required >
-              <span asp-validation-for="firstName" class="text-danger"></span>
+            <input asp-for="firstName" class="form-control">
         </div>
     </div>
     <div class="row mb-3">
-        <label asp-for="lastName" class="col-sm-2 col-form-label" >Last Name</label>
+        <label asp-for="lastName" class="col-sm-2 col-form-label">Last Name</label>
         <div class="col-sm-10">
-            <input asp-for="lastName" class="form-control" required >
-               <span asp-validation-for="lastName" class="text-danger"></span>
+            <input asp-for="lastName" class="form-control">
         </div>
     </div>
     <div class="row mb-3">
         <label asp-for="address" class="col-sm-2 col-form-label">Address</label>
         <div class="col-sm-10">
-            <input asp-for="address" class="form-control" required>
-               <span asp-validation-for="address" class="text-danger"></span>
+            <input asp-for="address" class="form-control">
         </div>
     </div>
     <div class="row mb-3">
         <label asp-for="city" class="col-sm-2 col-form-label">City</label>
         <div class="col-sm-10">
-            <input asp-for="city" class="form-control" required>
-               <span asp-validation-for="city" class="text-danger"></span>
+            <input asp-for="city" class="form-control">
         </div>
     </div>
     <div class="row mb-3">
         <label asp-for="state" class="col-sm-2 col-form-label">State</label>
         <div class="col-sm-10">
-            <input asp-for="state" class="form-control" required>
-               <span asp-validation-for="state" class="text-danger" ></span>
+            <input asp-for="state" class="form-control">
         </div>
     </div>
     <div class="row mb-3">
         <label asp-for="postCode" class="col-sm-2 col-form-label">Postal Code</label>
         <div class="col-sm-10">
-            <input asp-for="postCode" class="form-control" required>
-               <span asp-validation-for="postCode" class="text-danger"></span>
+            <input asp-for="postCode" class="form-control">
         </div>
     </div>
     <div class="row mb-3">
         <label asp-for="CountryId" class="col-sm-2 col-form-label">Country</label>
         <div class="col-sm-10">
-            <select class="form-select " asp-for="CountryId" required>
-                <option  value ="" selected disabled>Select a country</option>
+            <select class="form-select " asp-for="CountryId">
+                <option value="" selected>Select a country</option>
                 @foreach (Country c in countries)
             {
                 <option value="@c.CountryId">@c.Name</option>
             }
             </select>
-               <span asp-validation-for="CountryId" class="text-danger"></span>
         </div>
     </div>
         <div class="row mb-3">
-            <label asp-for="email" class="col-sm-2 col-form-label" >Email</label>
+            <label asp-for="email" class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-10">
-                <input  type="email" asp-for="email" class="form-control" required >
-                   <span asp-validation-for="email" class="text-danger"></span>
+                <input asp-for="email" class="form-control">
             </div>
         </div>
         <div class="row mb-3">
             <label asp-for="phone" class="col-sm-2 col-form-label">Phone</label>
             <div class="col-sm-10">
-                <input type="tel"  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" asp-for="phone" placeholder="999- 999-9999" class="form-control">
+                <input asp-for="phone" class="form-control">
             </div>
         </div>
 
@@ -85,10 +77,3 @@
         <a asp-action="List"
            class="btn btn-primary">Cancel</a>
 </form>
-
-@* all validation done on client side *@
-@section Scripts{
-    @{
-        <partial name="_ValidationScriptsPartial" />
-    }
-}

@@ -1,6 +1,6 @@
 ﻿@model IncidentViewModel
 @{
-    ViewBag.Title = TempData["action"] + " Incident";
+    ViewBag.Title = ViewBag.Action + " Incident";
 }
 <h2>@ViewBag.Title</h2>
 <form asp-action="@ViewBag.Action" method="post">
@@ -8,12 +8,12 @@
 
     <div class="mb-3">
         <label asp-for="Incident.customerID" class="form-label">Customer</label>
-        <select class="form-select" asp-for="Incident.customerID" asp-items="@ViewBag.Customer"></select>
+        <select class="form-select" asp-for="Incident.customerID" asp-items="@(new SelectList(ViewBag.Customer, "customerID", "firstName", Model.Incident.customerID.ToString()))"></select>
     </div>
 
     <div class="mb-3">
         <label asp-for="Incident.productID" class="form-label">Product</label>
-        <select class="form-select" asp-for="Incident.productID" asp-items="@ViewBag.Product"></select>
+        <select class="form-select" asp-for="Incident.productID" asp-items="@(new SelectList(ViewBag.Product, "ProductID", "name", Model.Incident.productID.ToString()))"></select>
     </div>
 
     <div class="mb-3">
@@ -28,8 +28,7 @@
 
     <div class="mb-3">
         <label asp-for="Incident.technician" class="form-label">Technician</label>
-        <select class="form-select" asp-for="Incident.technicianID" asp-items="@ViewBag.Technician"><option value="">Choose a Technician...</option></select>
-
+        <select class="form-select" asp-for="Incident.technicianID" asp-items="@(new SelectList(ViewBag.Technician, "TechnicianID", "name", Model.Incident.technicianID.ToString()))"></select>
     </div>
 
     <div class="mb-3">

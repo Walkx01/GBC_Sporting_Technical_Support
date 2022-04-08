@@ -23,6 +23,7 @@
     <None Remove="Views\Technician\" />
     <None Remove="Views\Customer\" />
     <None Remove="Views\Incident\" />
+    <None Remove="Microsoft.AspNetCore.Mvc.NewtonsoftJson" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Customer\" />

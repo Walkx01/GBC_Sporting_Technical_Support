@@ -1,25 +1,26 @@
 ﻿<Properties StartupConfiguration="{8BBD4EEF-297C-4BEB-BF3C-E8EA02669A76}|Default">
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.A1 PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/IncidentController.cs">
     <Files>
-      <File FileName="Controllers/IncidentController.cs" Line="9" Column="6" />
+      <File FileName="Controllers/IncidentController.cs" Line="102" Column="19" />
+      <File FileName="Views/Incident/Edit.cshtml" Line="3" Column="29" />
+      <File FileName="Models/dbContect.cs" Line="56" Column="1" />
+      <File FileName="Views/Incident/List.cshtml" Line="12" Column="11" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="A1" expanded="True">
             <Node name="A1" expanded="True">
-              <Node name="Dependencies" expanded="True">
-                <Node name="PackageDependencies" expanded="True" />
-              </Node>
               <Node name="Controllers" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="Views" expanded="True">
+                <Node name="Customer" expanded="True" />
                 <Node name="Incident" expanded="True" />
               </Node>
             </Node>
@@ -31,5 +32,5 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.A1 PreferredExecutionTarget="/Applications/Google Chrome.app" />
 </Properties>
