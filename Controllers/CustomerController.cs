@@ -27,14 +27,23 @@ namespace A1.Controllers
         [HttpPost]
         public IActionResult Add(Customer customer)
         {
-          
             ViewBag.Action = "Add";
+            ViewData["Countries"] = context.Countries.OrderBy(c => c.Name).ToList();
             if (ModelState.IsValid)
             {
-                TempData["message"] = "Successfully Added: " + customer.firstName + " " + customer.lastName;
-                context.Customers.Add(customer);
-                context.SaveChanges();
-                return RedirectToAction("List");
+                if (context.Customers.Any(c => c.email == customer.email))
+                {
+                    TempData["error"] = " this email is arealdy registered: ";
+                    return View("Edit", customer);
+                }
+                else
+                {
+                    TempData["message"] = "Successfully Added: " + customer.firstName + " " + customer.lastName;
+                    context.Customers.Add(customer);
+                    context.SaveChanges();
+                    return RedirectToAction("List");
+                }
+
             }
             return View("Edit", customer);
         }
@@ -51,6 +60,7 @@ namespace A1.Controllers
         [HttpPost]
         public IActionResult Edit(Customer customer)
         {
+            ViewBag.Action = "Edit";
             if (ModelState.IsValid)
             {
                 TempData["message"] = "Successfully Updated: " + customer.firstName + " " + customer.lastName;
