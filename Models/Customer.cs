@@ -41,6 +41,8 @@ namespace A1.Models
         // public string? country { get; set; }
         public int CountryId { get; set; }
         public virtual Country? Country { get; set; }
+
+        public ICollection<Registration> products { get; set; }
     }
 }
 

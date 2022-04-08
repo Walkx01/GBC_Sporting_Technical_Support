@@ -37,6 +37,9 @@
                         <li class="nav-item">
                             <a class="nav-link @(controller == "Incident" ? "active" : "")" asp-controller="Incident" asp-action="List">Incident</a>
                         </li>
+                         <li class="nav-item">
+                            <a class="nav-link @(controller == "Registration" ? "active" : "")" asp-controller="Registration" asp-action="ListCustomers">Registration</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link @(controller == "Home" && action == "About" ? "active" : "")" asp-controller="Home" asp-action="About">About</a>
                         </li>

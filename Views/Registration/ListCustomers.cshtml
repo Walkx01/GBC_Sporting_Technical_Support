@@ -1,7 +1,7 @@
-﻿@model List<Technician>
+﻿@model List<Customer>
 
 <h1>
-	Technician
+	Get Customer
 </h1>
 
 <form asp-action="@ViewBag.Action" method="post">
@@ -9,10 +9,11 @@
   
     <div class="row mb-3">
         <div class="col-sm-10">
-            <select class="form-select " >
-                @foreach (Technician c in Model)
+            <select class="form-select "  required>
+                 <option  selected disabled value="">Select a customer</option>
+                @foreach (Customer c in Model)
             {
-                <option value="@c.TechnicianID">@c.name</option>
+                <option value="@c.customerID">@c.firstName @c.lastName</option>
             }
             </select>
         </div>
