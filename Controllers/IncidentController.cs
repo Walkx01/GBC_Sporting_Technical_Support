@@ -11,10 +11,9 @@ namespace A1.Controllers
 
         public IncidentController(dbContect ctx) => context = ctx;
 
-        [Route("Incidents")]
+        [Route("Incident")]
         public IActionResult List(string filter = "all")
         {
-            var vm = new IncidentViewModel();
             if (filter.ToLower() == "all")
             {
                 var inci = context.Incidents
@@ -45,68 +44,99 @@ namespace A1.Controllers
                     .ToList();
                 return View(inci);
             }
-            //var incident = context.Incidents
-            //    .Include(i => i.customer)
-            //    .Include(i => i.product)
-            //    .Include(i => i.technician)
-            //    .OrderBy(i => i.IncidentID)
-            //    .ToList();
-            //return View(incident);
         }
 
 
+        //[HttpGet]
+        //public IActionResult Add()
+        //{
+        //    ViewBag.Action = "Add";
+        //    var vm = new IncidentViewModel();
+        //    ViewBag.Product = context.Products.ToList();
+        //    ViewBag.Customer = context.Customers.ToList();
+        //    ViewBag.Technician = new SelectList(context.Technician, "TechnicianID", "name");
+        //    return View("Edit", new Incident());
+        //}
+
+        //[HttpPost]
+        //public IActionResult Add(Incident incident)
+        //{
+        //    ViewBag.Product = context.Products.OrderBy(p => p.name).ToList();
+        //    ViewBag.Customer = context.Customers.OrderBy(c => c.firstName).ToList();
+        //    ViewBag.Technician = new SelectList(context.Technician, "TechnicianID", "name");
+        //    ViewBag.Action = "Add";
+        //    if (ModelState.IsValid)
+        //    {
+        //        TempData["message"] = "Successfully Added incident: " + incident.title + " " + incident.title;
+        //        context.Incidents.Add(incident);
+        //        context.SaveChanges();
+        //        return RedirectToAction("List");
+        //    }
+        //    return View("Edit", incident);
+        //}
+
         [HttpGet]
-        public IActionResult Add()
+        public IActionResult Edit(string page = "", int? id = null)
         {
-            ViewBag.Action = "Add";
-            ViewBag.Product = context.Products.ToList();
-            ViewBag.Customer = context.Customers.ToList();
-            ViewBag.Technician = new SelectList(context.Technician, "TechnicianID", "name");
-            return View("Edit", new Incident());
+            var vm = new IncidentViewModel();
+
+            if (page.ToLower() == "add")
+            {
+                TempData["action"] = "Add";
+                vm.page = "add";
+                ViewBag.Product = new SelectList(context.Products, "ProductID", "code");
+                ViewBag.Customer = new SelectList(context.Customers, "customerID", "firstName");
+                ViewBag.Technician = new SelectList(context.Technician, "TechnicianID", "name");
+                return View("Edit", vm);
+            }
+            else
+            {
+                TempData["action"] = "Edit";
+                vm.page = "edit";
+                ViewBag.Product = new SelectList(context.Products, "ProductID", "code");
+                ViewBag.Customer = new SelectList(context.Customers, "customerID", "firstName");
+                ViewBag.Technician = new SelectList(context.Technician, "TechnicianID", "name");
+                vm.Incident = context.Incidents.Find(id);
+                return View(vm);
+            }
         }
 
         [HttpPost]
-        public IActionResult Add(Incident incident)
+        public IActionResult Edit(IncidentViewModel vm)
         {
-            ViewBag.Product = context.Products.OrderBy(p => p.name).ToList();
-            ViewBag.Customer = context.Customers.OrderBy(c => c.firstName).ToList();
-            ViewBag.Technician = new SelectList(context.Technician, "TechnicianID", "name");
-            ViewBag.Action = "Add";
-            if (ModelState.IsValid)
-            {
-                TempData["message"] = "Successfully Added incident: " + incident.title + " " + incident.title;
-                context.Incidents.Add(incident);
-                context.SaveChanges();
-                return RedirectToAction("List");
-            }
-            return View("Edit", incident);
-        }
+            TempData["product"] = vm.Incident.productID;
 
-        [HttpGet]
-        public IActionResult Edit(int id)
-        {
-            ViewBag.Action = "Edit";
-            ViewBag.Product = context.Products.OrderBy(p => p.name).ToList();
-            ViewBag.Customer = context.Customers.OrderBy(c => c.firstName).ToList();
-            ViewBag.Technician = context.Technician.OrderBy(t => t.name).ToList();
-            var incident = context.Incidents.Find(id);
-            return View(incident);
-        }
-
-        [HttpPost]
-        public IActionResult Edit(Incident incident)
-        {
-            if (ModelState.IsValid)
+            if (vm.page == "add")
             {
-                TempData["message"] = "Successfully Updated incident: " + incident.title;
-                context.Incidents.Update(incident);
-                context.SaveChanges();
-                return RedirectToAction("List");
+                if (ModelState.IsValid)
+                {
+
+                    TempData["message"] = "Successfully Added incident: " + vm.Incident.title + " " + vm.Incident.title;
+                    context.Incidents.Add(vm.Incident);
+                    context.SaveChanges();
+                    return RedirectToAction("List");
+                }
+                else
+                {
+                    TempData["action"] = "Add";
+                    return View("Edit", vm);
+                }
             }
-            //ViewBag.Product = context.Products.OrderBy(p => p.name).ToList();
-            //ViewBag.Customer = context.Customers.OrderBy(c => c.firstName).ToList();
-            //ViewBag.Technician = context.Technician.OrderBy(t => t.name).ToList();
-            return View(incident);
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    TempData["message"] = "Successfully Updated incident: " + vm.Incident.title;
+                    context.Incidents.Update(vm.Incident);
+                    context.SaveChanges();
+                    return RedirectToAction("List");
+                }
+                else
+                {
+                    TempData["action"] = "Edit";
+                    return View("Edit", vm);
+                }
+            }
         }
 
         [HttpGet]
