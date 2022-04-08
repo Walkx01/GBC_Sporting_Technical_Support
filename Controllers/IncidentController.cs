@@ -89,7 +89,7 @@ namespace A1.Controllers
         [HttpPost]
         public IActionResult Edit(IncidentViewModel vm)
         {
-            var select = context.Customers.Where(c => c.customerID == vm.Incident.customerID);
+            
 
             ViewBag.Customer = new SelectList(vm.Customer, "customerID", "firstName", selectedValue:vm.Incident.customerID.ToString());
             ViewBag.Product = new SelectList(vm.Products, "ProductID", "name", vm.Incident.productID.ToString());
