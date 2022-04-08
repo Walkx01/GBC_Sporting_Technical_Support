@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Regis\**" />
+    <Content Remove="Views\Regis\**" />
+    <EmbeddedResource Remove="Views\Regis\**" />
+    <None Remove="Views\Regis\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Models\" />
     <None Remove="Microsoft.EntityFrameworkCore" />
     <None Remove="Microsoft.EntityFrameworkCore.SqlServer" />
@@ -18,7 +25,6 @@
     <None Remove="Views\Incident\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
     <Folder Include="Views\Customer\" />
     <Folder Include="Views\Incident\" />
   </ItemGroup>

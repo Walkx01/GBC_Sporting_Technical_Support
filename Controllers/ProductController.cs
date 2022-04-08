@@ -55,6 +55,7 @@ namespace A1.Controllers
                 context.SaveChanges();
                 return RedirectToAction("List");
             }
+            ViewBag.Action = "Edit";
             return View(product);
         }
 

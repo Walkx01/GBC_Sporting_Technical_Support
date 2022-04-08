@@ -37,6 +37,9 @@
                         <li class="nav-item">
                             <a class="nav-link @(controller == "Incident" ? "active" : "")" asp-controller="Incident" asp-action="List">Incident</a>
                         </li>
+                         <li class="nav-item">
+                            <a class="nav-link @(controller == "Registration" ? "active" : "")" asp-controller="Registration" asp-action="ListCustomers">Registration</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link @(controller == "Home" && action == "About" ? "active" : "")" asp-controller="Home" asp-action="About">About</a>
                         </li>
@@ -55,6 +58,16 @@
     <div class="alert alert-dismissible alert-success">
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         <strong>@TempData["message"]</strong> 
+    </div>
+}
+
+   <!-- display error  message-->
+            @if (TempData.Keys.Contains("error"))
+{
+
+    <div class="alert alert-dismissible alert-danger">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <strong>@TempData["error"]</strong> 
     </div>
 }
             @RenderBody()

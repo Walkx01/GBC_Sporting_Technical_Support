@@ -1,25 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "/Users/noorsaid/Projects/GBC_Sporting_Technical_Support/A1.csproj": {}
+    "F:\\T177\\semesster4\\web-app development\\assignment\\assignment2\\A1.csproj": {}
   },
   "projects": {
-    "/Users/noorsaid/Projects/GBC_Sporting_Technical_Support/A1.csproj": {
+    "F:\\T177\\semesster4\\web-app development\\assignment\\assignment2\\A1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/noorsaid/Projects/GBC_Sporting_Technical_Support/A1.csproj",
+        "projectUniqueName": "F:\\T177\\semesster4\\web-app development\\assignment\\assignment2\\A1.csproj",
         "projectName": "A1",
-        "projectPath": "/Users/noorsaid/Projects/GBC_Sporting_Technical_Support/A1.csproj",
-        "packagesPath": "/Users/noorsaid/.nuget/packages/",
-        "outputPath": "/Users/noorsaid/Projects/GBC_Sporting_Technical_Support/obj/",
+        "projectPath": "F:\\T177\\semesster4\\web-app development\\assignment\\assignment2\\A1.csproj",
+        "packagesPath": "C:\\Users\\Walker\\.nuget\\packages\\",
+        "outputPath": "F:\\T177\\semesster4\\web-app development\\assignment\\assignment2\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/Users/noorsaid/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Walker\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -75,7 +81,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.201/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

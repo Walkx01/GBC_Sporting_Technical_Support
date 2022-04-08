@@ -13,6 +13,7 @@ namespace A1.Models
 		public DbSet<Product> Products { get; set; }
 		public DbSet<Technician> Technician { get; set; }
 		public DbSet<Incident> Incidents { get; set; }
+		public DbSet<Registration> Registrations { get; set; }
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
@@ -129,6 +130,21 @@ namespace A1.Models
 					dateOpened = DateTime.Now
 				}
 				);
+
+
+			modelBuilder.Entity<Registration>().HasKey(
+				ba => new {ba.customerId,ba.productId}
+			);
+
+			modelBuilder.Entity<Registration>()
+				.HasOne(ba => ba.customer)
+				.WithMany(ba => ba.products)
+				.HasForeignKey(ba =>ba.customerId);
+
+			modelBuilder.Entity<Registration>()
+				.HasOne(ba => ba.product)
+				.WithMany(ba => ba.customers)
+				.HasForeignKey(ba => ba.productId);
 
 		}
 

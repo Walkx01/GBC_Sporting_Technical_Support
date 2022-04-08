@@ -19,6 +19,8 @@ namespace A1.Models
         [DataType(DataType.DateTime)]
         public DateTime releaseDate { get; set; } = DateTime.Now;
 
+        public ICollection<Registration>? customers { get; set; }
+
     }
 }
 

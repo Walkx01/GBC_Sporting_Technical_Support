@@ -63,33 +63,41 @@ namespace A1.Migrations
 
                     b.Property<string>("address")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(51)
+                        .HasColumnType("nvarchar(51)");
 
                     b.Property<string>("city")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(51)
+                        .HasColumnType("nvarchar(51)");
 
                     b.Property<string>("email")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(51)
+                        .HasColumnType("nvarchar(51)");
 
                     b.Property<string>("firstName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(51)
+                        .HasColumnType("nvarchar(51)");
 
                     b.Property<string>("lastName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(51)
+                        .HasColumnType("nvarchar(51)");
 
                     b.Property<string>("phone")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("postCode")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(21)
+                        .HasColumnType("nvarchar(21)");
 
                     b.Property<string>("state")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(51)
+                        .HasColumnType("nvarchar(51)");
 
                     b.HasKey("customerID");
 
@@ -173,8 +181,8 @@ namespace A1.Migrations
                         {
                             IncidentID = 1,
                             customerID = 1,
-                            dateClosed = new DateTime(2022, 4, 7, 16, 13, 38, 27, DateTimeKind.Local).AddTicks(7120),
-                            dateOpened = new DateTime(2022, 4, 7, 16, 13, 38, 27, DateTimeKind.Local).AddTicks(7120),
+                            dateClosed = new DateTime(2022, 4, 7, 22, 20, 14, 97, DateTimeKind.Local).AddTicks(9944),
+                            dateOpened = new DateTime(2022, 4, 7, 22, 20, 14, 97, DateTimeKind.Local).AddTicks(9946),
                             description = "Bleep bleep, bloop bloop",
                             productID = 1,
                             technicianID = 1,
@@ -184,8 +192,8 @@ namespace A1.Migrations
                         {
                             IncidentID = 2,
                             customerID = 2,
-                            dateClosed = new DateTime(2022, 4, 7, 16, 13, 38, 27, DateTimeKind.Local).AddTicks(7130),
-                            dateOpened = new DateTime(2022, 4, 7, 16, 13, 38, 27, DateTimeKind.Local).AddTicks(7140),
+                            dateClosed = new DateTime(2022, 4, 7, 22, 20, 14, 97, DateTimeKind.Local).AddTicks(9950),
+                            dateOpened = new DateTime(2022, 4, 7, 22, 20, 14, 97, DateTimeKind.Local).AddTicks(9951),
                             description = "Bloop bloop, bleep bleep",
                             productID = 2,
                             technicianID = 2,
@@ -245,6 +253,24 @@ namespace A1.Migrations
                             releaseDate = new DateTime(2022, 4, 7, 0, 0, 0, 0, DateTimeKind.Local),
                             yearlyPrice = 392.02999999999997
                         });
+                });
+
+            modelBuilder.Entity("A1.Models.Registration", b =>
+                {
+                    b.Property<int?>("customerId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("productId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RegistrationId")
+                        .HasColumnType("int");
+
+                    b.HasKey("customerId", "productId");
+
+                    b.HasIndex("productId");
+
+                    b.ToTable("Registrations");
                 });
 
             modelBuilder.Entity("A1.Models.Technician", b =>
@@ -331,9 +357,38 @@ namespace A1.Migrations
                     b.Navigation("technician");
                 });
 
+            modelBuilder.Entity("A1.Models.Registration", b =>
+                {
+                    b.HasOne("A1.Models.Customer", "customer")
+                        .WithMany("products")
+                        .HasForeignKey("customerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("A1.Models.Product", "product")
+                        .WithMany("customers")
+                        .HasForeignKey("productId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("customer");
+
+                    b.Navigation("product");
+                });
+
             modelBuilder.Entity("A1.Models.Country", b =>
                 {
                     b.Navigation("Customers");
+                });
+
+            modelBuilder.Entity("A1.Models.Customer", b =>
+                {
+                    b.Navigation("products");
+                });
+
+            modelBuilder.Entity("A1.Models.Product", b =>
+                {
+                    b.Navigation("customers");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,0 +1,43 @@
+﻿@model Customer
+
+<h2>Customer: @ViewBag.customer.firstName </h2>
+<h2>Registrations</h2>
+
+
+  @if( Model.products == null)
+            {
+    <h2>customer has no  products</h2>
+    
+}
+
+else
+{
+       <form method="post">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th> product </th>
+                <th> </th>
+            </tr>
+        </thead>
+        <tbody>
+          
+        
+            @foreach (var  product in Model.products)
+            {
+                <tr class="table-active">
+                    <td> @product.product.name </td>
+                    <td> <a class="btn btn-primary mx-2" asp-action="Delete" asp-route-id="@product.productId">Delete</a> </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>
+
+}
+
+ 
+
+
+<h2>Product</h2>
+
