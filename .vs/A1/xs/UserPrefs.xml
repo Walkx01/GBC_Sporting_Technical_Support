@@ -5,9 +5,11 @@
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/IncidentController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="appsettings.json">
     <Files>
-      <File FileName="Controllers/IncidentController.cs" Line="9" Column="6" />
+      <File FileName="Controllers/IncidentController.cs" Line="73" Column="1" />
+      <File FileName="Views/Incident/Edit.cshtml" Line="11" Column="1" />
+      <File FileName="appsettings.json" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -18,7 +20,6 @@
                 <Node name="PackageDependencies" expanded="True" />
               </Node>
               <Node name="Controllers" expanded="True" />
-              <Node name="Models" expanded="True" />
               <Node name="Views" expanded="True">
                 <Node name="Incident" expanded="True" />
               </Node>
