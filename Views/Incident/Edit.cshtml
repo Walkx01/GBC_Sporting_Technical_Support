@@ -3,17 +3,17 @@
     ViewBag.Title = TempData["action"] + " Incident";
 }
 <h2>@ViewBag.Title</h2>
-<form asp-action="@ViewBag.Action" method="post">
+<form asp-action="@TempData["action"]" method="post">
     <div asp-validation-summary="All" class="text-danger"></div>
 
     <div class="mb-3">
         <label asp-for="Incident.customerID" class="form-label">Customer</label>
-        <select class="form-select" asp-for="Incident.customerID" asp-items="@ViewBag.Customer"></select>
+        <select class="form-select" asp-for="Incident.customerID" asp-items="@ViewBag.Customer"><option value="" selected>Select a Customer</option></select>
     </div>
 
     <div class="mb-3">
         <label asp-for="Incident.productID" class="form-label">Product</label>
-        <select class="form-select" asp-for="Incident.productID" asp-items="@ViewBag.Product"></select>
+        <select class="form-select" asp-for="Incident.productID" asp-items="@ViewBag.Product"><option value="" selected>Select a Product</option></select>
     </div>
 
     <div class="mb-3">
@@ -28,7 +28,8 @@
 
     <div class="mb-3">
         <label asp-for="Incident.technician" class="form-label">Technician</label>
-        <select class="form-select" asp-for="Incident.technicianID" asp-items="@ViewBag.Technician"><option value="">Choose a Technician...</option></select>
+        <select class="form-select" asp-for="Incident.technician" asp-items="@ViewBag.Technician"><option value="" selected>Select a Technician</option></select>
+
 
     </div>
 
