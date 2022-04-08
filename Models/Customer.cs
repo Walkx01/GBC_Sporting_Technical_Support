@@ -42,7 +42,7 @@ namespace A1.Models
         public int CountryId { get; set; }
         public virtual Country? Country { get; set; }
 
-        public ICollection<Registration> products { get; set; }
+        public ICollection<Registration>? products { get; set; }
     }
 }
 

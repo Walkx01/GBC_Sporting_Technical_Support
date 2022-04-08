@@ -13,15 +13,17 @@ namespace A1.Controllers
         [Route("Registrations")]
         public ViewResult ListCustomers()
         {
-            List<Customer> customers = context.Customers.OrderBy(p => p.firstName).ToList();
-            return View(customers);
+            ViewBag.customers = context.Customers.OrderBy(p => p.firstName).ToList();
+            return View();
         }
 
-        public ViewResult CustomerRegistrations( Customer customer)
+        public ViewResult CustomerRegistrations( int customerID)
         {
-            Registration reg = context.Registrations.Where(r => r.customerId == customer.customerID).Single();
+            Customer customer = context.Customers.FirstOrDefault(p=> p.customerID == customerID);
+            ViewBag.customer = customer;
+            Registration reg = context.Registrations.Where(r => r.customerId == customer.customerID).FirstOrDefault();
 
-            return View(reg);
+            return View(customer);
         }
 
     }

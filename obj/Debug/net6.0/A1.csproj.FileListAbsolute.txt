@@ -1318,3 +1318,4 @@ F:\T177\semesster4\web-app development\assignment\assignment2\obj\Debug\net6.0\r
 F:\T177\semesster4\web-app development\assignment\assignment2\obj\Debug\net6.0\A1.pdb
 F:\T177\semesster4\web-app development\assignment\assignment2\obj\Debug\net6.0\A1.genruntimeconfig.cache
 F:\T177\semesster4\web-app development\assignment\assignment2\obj\Debug\net6.0\scopedcss\Views\Shared\_ValidationScriptsPartial.cshtml.rz.scp.css
+F:\T177\semesster4\web-app development\assignment\assignment2\obj\Debug\net6.0\A1.csproj.AssemblyReference.cache

@@ -1,17 +1,18 @@
 ﻿@model Customer
 
-<h2>Customer: @Model.firstName </h2>
+<h2>Customer: @ViewBag.customer.firstName </h2>
 <h2>Registrations</h2>
 
 
   @if( Model.products == null)
             {
-                <h2>customer has no  products</h2>
-            }
+    <h2>customer has no  products</h2>
+    
+}
 
-
-
-    <form method="post">
+else
+{
+       <form method="post">
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
@@ -33,6 +34,9 @@
     </table>
 </form>
 
+}
+
+ 
 
 
 <h2>Product</h2>

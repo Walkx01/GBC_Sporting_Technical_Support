@@ -1,19 +1,20 @@
-﻿@model List<Customer>
+﻿@model Customer
 
 <h1>
 	Get Customer
 </h1>
 
-<form asp-action="@ViewBag.Action" method="post">
+<form asp-action="CustomerRegistrations" method="post">
     <div asp-validation-summary="All" class="text-danger"></div>
   
     <div class="row mb-3">
         <div class="col-sm-10">
-            <select class="form-select "  required>
-                 <option  selected disabled value="">Select a customer</option>
-                @foreach (Customer c in Model)
+            <select class="form-select " asp-for="customerID" required>
+                 <option   selected disabled value="">Select a customer</option>
+                @foreach (Customer c in ViewBag.customers)
             {
-                <option value="@c.customerID">@c.firstName @c.lastName</option>
+                <option  value="@c.customerID">@c.firstName @c.lastName</option>
+               
             }
             </select>
         </div>
@@ -24,6 +25,6 @@
         <a asp-controller = "Home" asp-action="Index"
            class="btn btn-primary">Cancel</a>
         </div>
-      
+    
         
 </form>
