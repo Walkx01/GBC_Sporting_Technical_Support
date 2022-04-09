@@ -1,0 +1,30 @@
+﻿@model Technician
+
+<h1>
+	Technician
+</h1>
+
+<form   asp-action="@ViewBag.Action"   method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+  
+    <div class="row mb-3">
+        <div class="col-sm-10">
+            <select class="form-select " asp-for="TechnicianID" required >
+                <option   selected disabled value="">Select a technician</option>
+                @foreach (Technician c in ViewBag.technicians)
+            {
+                <option value="@c.TechnicianID">@c.name</option>
+            }
+            </select>
+        </div>
+    
+        <div class="col">
+
+            <button type="submit" class="btn btn-primary">Select</button>
+        <a asp-controller = "Home" asp-action="Index"
+           class="btn btn-primary">Cancel</a>
+        </div>
+      
+        
+</form>
+

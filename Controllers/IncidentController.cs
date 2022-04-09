@@ -45,6 +45,7 @@ namespace A1.Controllers
             }
         }
 
+
         [HttpGet]
         public IActionResult Add()
         {
@@ -117,5 +118,8 @@ namespace A1.Controllers
             context.SaveChanges();
             return RedirectToAction("List");
         }
+
+
+      
     }
 }

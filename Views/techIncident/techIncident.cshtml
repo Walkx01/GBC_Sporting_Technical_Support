@@ -1,0 +1,53 @@
+﻿
+@model List<Incident>
+
+@if (!Model.Any())
+            {
+               <h1>
+                   There are no open incidents for the current technician
+               </h1>
+                   <a class="btn btn-secondary my-2 my-sm-0" asp-controller="techIncident"  asp-action="ListTechnicians">Switch Technician</a>
+            }
+
+else
+{
+    <br />
+    <h2> Welcome Technician:@Model.Last().technician.name</h2>
+    <br>
+        <h2>Assigned/open incidents:</h2>
+
+     
+
+<form method="post">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th> title </th>
+                <th> Customer </th>
+                <th> product </th>
+                <th>Date Openped </th>
+                <th> </th>
+            </tr>
+        </thead>
+        <tbody>
+          @foreach (var incid in Model)
+
+            {
+                <tr class="table-active">
+                    <td> @incid.title </td>
+                    <td> @incid.customer.firstName @incid.customer.lastName</td>
+                    <td> @incid.product.name </td>
+                     <td> @incid.dateOpened </td>
+                    <td>
+                        <a class="btn btn-primary mx-2" asp-action="Edit" asp-route-id="@incid.IncidentID">Edit</a>
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a class="btn btn-secondary my-2 my-sm-0" asp-controller="techIncident"  asp-action="ListTechnicians">Switch Technician</a>
+</form>
+
+    
+}

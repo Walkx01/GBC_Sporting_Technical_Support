@@ -1,0 +1,51 @@
+﻿@model Incident
+
+<h1>Edit Incident</h1>
+
+
+<form asp-action="Edit" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+
+    <div class="mb-3">
+        <label asp-for="technician" class="form-label">Technician</label>
+        <label class="form-select"  asp-for="technicianID" >@Model.technician.name</label>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="customerID" class="form-label">Customer</label>
+        <label   asp-for="customerID " class="form-control" >@Model.customer.firstName @Model.customer.lastName</label>
+    </div>
+    
+    
+
+    <div class="mb-3">
+        <label asp-for="productID" class="form-label">Product</label>
+        <label asp-for="productID" class="form-control">@Model.product.name</label>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="title" class="form-label">Title</label>
+        <label   asp-for="title" class="form-control">@Model.title </label>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="dateOpened" class="form-label">Date Opened</label>
+        <label asp-for="dateOpened" class="form-control"> @Model.dateOpened</label>
+    </div>
+
+     
+    <div class="mb-3">
+        <label asp-for="description" class="form-label">Description</label>
+        <input asp-for="description" class="form-control">
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="dateClosed" class="form-label">Date Closed</label>
+        <input asp-for="dateClosed" class="form-control">
+    </div>
+
+     <input type="hidden" asp-for="IncidentID" />
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a  asp-route-technicianID = "@Model.technician.TechnicianID" asp-action="ListSpecificIncdient" class="btn btn-primary">Cancel</a>
+</form>
