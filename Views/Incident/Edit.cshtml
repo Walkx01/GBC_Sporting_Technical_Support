@@ -1,4 +1,4 @@
-﻿@model IncidentViewModel
+﻿@model Incident
 @{
     ViewBag.Title = ViewBag.Action + " Incident";
 }
@@ -7,41 +7,41 @@
     <div asp-validation-summary="All" class="text-danger"></div>
 
     <div class="mb-3">
-        <label asp-for="Incident.customerID" class="form-label">Customer</label>
-        <select class="form-select" asp-for="Incident.customerID" asp-items="@(new SelectList(ViewBag.Customer, "customerID", "firstName", Model.Incident.customerID.ToString()))"></select>
+        <label asp-for="customerID" class="form-label">Customer</label>
+        <select class="form-select" asp-for="customerID" asp-items="@(new SelectList(ViewBag.Customer, "customerID", "firstName", Model.customerID.ToString()))"><option>Select a Customer...</option></select>
     </div>
 
     <div class="mb-3">
-        <label asp-for="Incident.productID" class="form-label">Product</label>
-        <select class="form-select" asp-for="Incident.productID" asp-items="@(new SelectList(ViewBag.Product, "ProductID", "name", Model.Incident.productID.ToString()))"></select>
+        <label asp-for="productID" class="form-label">Product</label>
+        <select class="form-select" asp-for="productID" asp-items="@(new SelectList(ViewBag.Product, "ProductID", "name", Model.productID.ToString()))"><option>Select a Product</option></select>
     </div>
 
     <div class="mb-3">
-        <label asp-for="Incident.title" class="form-label">Title</label>
-        <input asp-for="Incident.title" class="form-control">
+        <label asp-for="title" class="form-label">Title</label>
+        <input asp-for="title" class="form-control">
     </div>
 
     <div class="mb-3">
-        <label asp-for="Incident.description" class="form-label">Description</label>
-        <input asp-for="Incident.description" class="form-control">
+        <label asp-for="description" class="form-label">Description</label>
+        <input asp-for="description" class="form-control">
     </div>
 
     <div class="mb-3">
-        <label asp-for="Incident.technician" class="form-label">Technician</label>
-        <select class="form-select" asp-for="Incident.technicianID" asp-items="@(new SelectList(ViewBag.Technician, "TechnicianID", "name", Model.Incident.technicianID.ToString()))"></select>
+        <label asp-for="technician" class="form-label">Technician</label>
+        <select class="form-select" asp-for="technicianID" asp-items="@(new SelectList(ViewBag.Technician, "TechnicianID", "name", Model.technicianID.ToString()))"></select>
     </div>
 
     <div class="mb-3">
-        <label asp-for="Incident.dateOpened" class="form-label">Date Opened</label>
-        <input asp-for="Incident.dateOpened" class="form-control">
+        <label asp-for="dateOpened" class="form-label">Date Opened</label>
+        <input asp-for="dateOpened" class="form-control">
     </div>
 
     <div class="mb-3">
-        <label asp-for="Incident.dateClosed" class="form-label">Date Closed</label>
-        <input asp-for="Incident.dateClosed" class="form-control">
+        <label asp-for="dateClosed" class="form-label">Date Closed</label>
+        <input asp-for="dateClosed" class="form-control">
     </div>
 
-    <input type="hidden" asp-for="Incident.IncidentID" />
+    <input type="hidden" asp-for="IncidentID" />
     <button type="submit" class="btn btn-primary">Save</button>
     <a asp-action="List"
        class="btn btn-primary">Cancel</a>

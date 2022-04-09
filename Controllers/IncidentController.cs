@@ -49,6 +49,7 @@ namespace A1.Controllers
         public IActionResult Add()
         {
             ViewBag.Action = "Add";
+            //IncidentViewModel incidentView = new IncidentViewModel();
             ViewBag.Product = context.Products.ToList();
             ViewBag.Customer = context.Customers.ToList();
             ViewBag.Technician = context.Technician.ToList();
