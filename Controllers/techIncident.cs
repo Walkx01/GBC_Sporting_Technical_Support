@@ -32,6 +32,7 @@ namespace A1.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
+
             ViewBag.Action = "Edit";
             Incident? incident = context.Incidents.Include(i => i.customer)
                             .Include(i => i.product)
@@ -39,7 +40,6 @@ namespace A1.Controllers
             ViewBag.Product = context.Products.ToList();
             ViewBag.Customer = context.Customers.ToList();
             ViewBag.Technician = context.Technician.ToList();
-
             return View(incident);
         }
 
