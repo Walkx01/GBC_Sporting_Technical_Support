@@ -8,12 +8,12 @@
 
     <div class="mb-3">
         <label asp-for="customerID" class="form-label">Customer</label>
-        <select class="form-select" asp-for="customerID" asp-items="@(new SelectList(ViewBag.Customer, "customerID", "firstName", Model.customerID.ToString()))"></select>
+        <select class="form-select" asp-for="customerID" asp-items="@(new SelectList(ViewBag.Customer, "customerID", "firstName", Model.customerID.ToString()))"><option>Select a Customer...</option></select>
     </div>
 
     <div class="mb-3">
         <label asp-for="productID" class="form-label">Product</label>
-        <select class="form-select" asp-for="productID" asp-items="@(new SelectList(ViewBag.Product, "ProductID", "name", Model.productID.ToString()))"></select>
+        <select class="form-select" asp-for="productID" asp-items="@(new SelectList(ViewBag.Product, "ProductID", "name", Model.productID.ToString()))"><option>Select a Product</option></select>
     </div>
 
     <div class="mb-3">

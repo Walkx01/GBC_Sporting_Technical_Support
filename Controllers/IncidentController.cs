@@ -45,11 +45,11 @@ namespace A1.Controllers
             }
         }
 
-
         [HttpGet]
         public IActionResult Add()
         {
             ViewBag.Action = "Add";
+            //IncidentViewModel incidentView = new IncidentViewModel();
             ViewBag.Product = context.Products.ToList();
             ViewBag.Customer = context.Customers.ToList();
             ViewBag.Technician = context.Technician.ToList();
@@ -118,8 +118,5 @@ namespace A1.Controllers
             context.SaveChanges();
             return RedirectToAction("List");
         }
-
-
-      
     }
 }
