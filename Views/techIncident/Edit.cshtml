@@ -1,43 +1,39 @@
 ﻿@model Incident
-
-<h1>Edit Incident</h1>
-
-
-<form asp-action="Edit" method="post">
+@{
+    ViewBag.Title = ViewBag.Action + " Incident";
+}
+<h2>@ViewBag.Title</h2>
+<form asp-action="@ViewBag.Action" method="post">
     <div asp-validation-summary="All" class="text-danger"></div>
-
-
-    <div class="mb-3">
-        <label asp-for="technician" class="form-label">Technician</label>
-        <label class="form-select"  asp-for="technicianID" >@Model.technician.name</label>
-    </div>
 
     <div class="mb-3">
         <label asp-for="customerID" class="form-label">Customer</label>
-        <label   asp-for="customerID " class="form-control" >@Model.customer.firstName @Model.customer.lastName</label>
+        <select class="form-select" asp-for="customerID" asp-items="@(new SelectList(ViewBag.Customer, "customerID", "firstName", Model.customerID.ToString()))"><option>Select a Customer...</option></select>
     </div>
-    
-    
 
     <div class="mb-3">
         <label asp-for="productID" class="form-label">Product</label>
-        <label asp-for="productID" class="form-control">@Model.product.name</label>
+        <select class="form-select" asp-for="productID" asp-items="@(new SelectList(ViewBag.Product, "ProductID", "name", Model.productID.ToString()))"><option>Select a Product</option></select>
     </div>
 
     <div class="mb-3">
         <label asp-for="title" class="form-label">Title</label>
-        <label   asp-for="title" class="form-control">@Model.title </label>
+        <input asp-for="title" class="form-control">
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="description" class="form-label">Description</label>
+        <input asp-for="description" class="form-control">
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="technician" class="form-label">Technician</label>
+        <select class="form-select" asp-for="technicianID" asp-items="@(new SelectList(ViewBag.Technician, "TechnicianID", "name", Model.technicianID.ToString()))"></select>
     </div>
 
     <div class="mb-3">
         <label asp-for="dateOpened" class="form-label">Date Opened</label>
-        <label asp-for="dateOpened" class="form-control"> @Model.dateOpened</label>
-    </div>
-
-     
-    <div class="mb-3">
-        <label asp-for="description" class="form-label">Description</label>
-        <input asp-for="description" class="form-control">
+        <input asp-for="dateOpened" class="form-control">
     </div>
 
     <div class="mb-3">
@@ -45,7 +41,8 @@
         <input asp-for="dateClosed" class="form-control">
     </div>
 
-     <input type="hidden" asp-for="IncidentID" />
+    <input type="hidden" asp-for="IncidentID" />
     <button type="submit" class="btn btn-primary">Save</button>
-    <a  asp-route-technicianID = "@Model.technician.TechnicianID" asp-action="ListSpecificIncdient" class="btn btn-primary">Cancel</a>
+    <a asp-action="List"
+       class="btn btn-primary">Cancel</a>
 </form>
